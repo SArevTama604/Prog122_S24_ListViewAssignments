@@ -11,9 +11,6 @@ using System.Windows.Shapes;
 
 namespace Prog122_S24_ListViewAssignments
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private List<Student> students = new List<Student>();
@@ -65,7 +62,7 @@ namespace Prog122_S24_ListViewAssignments
         {
             if (students.Count < 5)
             {
-                var placeholderStudents = Enumerable.Range(students.Count, 5 - students.Count)
+                var placeholderStudents = Enumerable.Range(students.Count + 1, 5 - students.Count)
                                                     .Select(i => new Student { Name = $"Placeholder {i}", Grade1 = 0, Grade2 = 0 });
                 StudentsListView.ItemsSource = students.Concat(placeholderStudents).Select(s => new
                 {
@@ -96,7 +93,11 @@ namespace Prog122_S24_ListViewAssignments
 
         private bool ValidateInputs()
         {
-            if (string.IsNullOrEmpty(NameTextBox.Text) || !double.TryParse(Grade1TextBox.Text, out var grade1) || !double.TryParse(Grade2TextBox.Text, out var grade2) || grade1 < 0 || grade1 > 100 || grade2 < 0 || grade2 > 100)
+            if (string.IsNullOrEmpty(NameTextBox.Text) ||
+                !double.TryParse(Grade1TextBox.Text, out var grade1) ||
+                !double.TryParse(Grade2TextBox.Text, out var grade2) ||
+                grade1 < 0 || grade1 > 100 ||
+                grade2 < 0 || grade2 > 100)
             {
                 MessageBox.Show("Invalid input. Please check the values entered.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
