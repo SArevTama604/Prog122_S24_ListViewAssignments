@@ -1,0 +1,67 @@
+﻿<Window
+    x:Class="Prog122_S24_ListViewAssignments.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Prog122_S24_ListViewAssignments"
+    mc:Ignorable="d"
+    Title="MainWindow"
+    Height="450"
+    Width="800">
+    <Canvas>
+        <StackPanel
+            Margin="10">
+            <TextBox
+                Name="NameTextBox"
+                PlaceholderText="Student Name" />
+            <TextBox
+                Name="Grade1TextBox"
+                PlaceholderText="First Grade" />
+            <TextBox
+                Name="Grade2TextBox"
+                PlaceholderText="Second Grade" />
+            <StackPanel
+                Orientation="Horizontal"
+                Margin="0,10,0,0">
+                <Button
+                    Name="AddButton"
+                    Content="Add Student"
+                    Click="AddButton_Click" />
+                <Button
+                    Name="EditButton"
+                    Content="Edit Selected Student"
+                    Click="EditButton_Click"
+                    Margin="10,0,0,0" />
+                <Button
+                    Name="DeleteButton"
+                    Content="Delete Selected Student"
+                    Click="DeleteButton_Click"
+                    Margin="10,0,0,0" />
+            </StackPanel>
+            <ListView
+                Name="StudentsListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+                            Header="Student Name"
+                            DisplayMemberBinding="{Binding Name}"
+                            Width="200" />
+                        <GridViewColumn
+                            Header="Grade 1"
+                            DisplayMemberBinding="{Binding Grade1}"
+                            Width="100" />
+                        <GridViewColumn
+                            Header="Grade 2"
+                            DisplayMemberBinding="{Binding Grade2}"
+                            Width="100" />
+                        <GridViewColumn
+                            Header="Average Grade"
+                            DisplayMemberBinding="{Binding AverageGrade}"
+                            Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Canvas>
+</Window>
